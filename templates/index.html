@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$FWOG Meme Indexer 🐸</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>$FWOG Meme Indexer 🐸</h1>
+        <p>Search dank $FWOG memes by @groowut! <a href="https://itsafwog.shop/" target="_blank">Shop plushies!</a></p>
+        <input type="text" id="searchBar" placeholder="Search (e.g., fwog, @groowut)">
+    </header>
+    <main>
+        <div id="memeGrid"></div>
+    </main>
+    <footer>
+        <p>Hype $FWOG: <a href="https://x.com/itsafwog/status/1914891501659713841" target="_blank">Game Teaser</a> | <a href="https://x.com/ridazlp2/status/1938286368053997635" target="_blank">More Vibes</a></p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
