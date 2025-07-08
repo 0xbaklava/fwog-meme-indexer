@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$FWOG Meme Indexer 🐸</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>$fwog meme indexer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>$FWOG Meme Indexer 🐸</h1>
-        <p>Search dank $FWOG memes by @groowut! <a href="https://itsafwog.shop/" target="_blank">Shop plushies!</a></p>
-        <input type="text" id="searchBar" placeholder="Search (e.g., fwog, @groowut)">
-    </header>
-    <main>
-        <div id="memeGrid"></div>
-    </main>
-    <footer>
-        <p>Hype $FWOG: <a href="https://x.com/itsafwog/status/1914891501659713841" target="_blank">Game Teaser</a> | <a href="https://x.com/ridazlp2/status/1938286368053997635" target="_blank">More Vibes</a></p>
-    </footer>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <div class="container">
+        <header>
+            <h1>$fwog meme indexer</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search memes...">
+            </div>
+        </header>
+
+        <main id="meme-grid">
+            <!-- Memes will be dynamically loaded here -->
+        </main>
+
+        <!-- Moved Upload Form to the bottom, after the main content -->
+        <form id="upload-form" enctype="multipart/form-data" method="POST" action="/upload" style="margin-top: 40px; margin-bottom: 30px; padding: 15px; border: 1px solid #333; border-radius: 8px; background-color: #0d0d0d;">
+            <h3 style="color: #00ff00;">Upload New $fwog Meme</h3>
+            <input type="file" name="meme_image" accept="image/*" required style="display: block; margin-bottom: 10px; width: 100%; padding: 8px; background-color: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px;">
+            <input type="text" name="description" placeholder="Description (e.g., 'Gm $fwog meme')" style="display: block; margin-bottom: 10px; width: 100%; padding: 8px; background-color: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px;">
+            <input type="text" name="tags" placeholder="Tags (comma separated, e.g., 'solana,gm,art')" style="display: block; margin-bottom: 10px; width: 100%; padding: 8px; background-color: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px;">
+            <button type="submit" style="padding: 10px 20px; background-color: #00ff00; color: black; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Upload Meme</button>
+        </form>
+
+    </div>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

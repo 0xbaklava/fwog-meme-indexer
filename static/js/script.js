@@ -1,31 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const searchBar = document.getElementById('searchBar');
-    const memeGrid = document.getElementById('memeGrid');
+    const searchInput = document.getElementById('search-input');
+    const memeGrid = document.getElementById('meme-grid');
 
+    // Fetch memes
     fetch('/memes')
         .then(response => response.json())
         .then(memes => {
-            displayMemes(memes);
-            searchBar.addEventListener('input', () => {
-                const query = searchBar.value.toLowerCase();
-                const filteredMemes = memes.filter(meme =>
-                    meme.description.toLowerCase().includes(query) ||
-                    meme.tags.some(tag => tag.toLowerCase().includes(query))
-                );
-                displayMemes(filteredMemes);
-            });
-        });
+            // Render initial memes
+            renderMemes(memes);
 
-    function displayMemes(memes) {
-        memeGrid.innerHTML = '';
-        memes.forEach(meme => {
-            const card = document.createElement('div');
-            card.className = 'meme-card';
-            card.innerHTML = `
-                <img src="${meme.path}" alt="${meme.description}">
-                <p>${meme.description}</p>
+            // Search functionality
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredMemes = memes.filter(meme => 
+                    meme.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
+                    meme.filename.toLowerCase().includes(searchTerm) ||
+                    meme.description.toLowerCase().includes(searchTerm)
+                );
+                renderMemes(filteredMemes);
+            });
+        })
+        .catch(error => console.error('Error fetching memes:', error));
+
+    function renderMemes(memesToRender) {
+        memeGrid.innerHTML = ''; // Clear existing memes
+        memesToRender.forEach(meme => {
+            const memeCard = document.createElement('div');
+            memeCard.classList.add('meme-card');
+
+            memeCard.innerHTML = `
+                <img src="/static/${meme.path}" alt="${meme.filename}">
+                <div class="meme-details">
+                    <div class="meme-tags">
+                        ${meme.tags.map(tag => `<span class="meme-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
             `;
-            memeGrid.appendChild(card);
+
+            memeGrid.appendChild(memeCard);
         });
     }
 });
