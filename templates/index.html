@@ -15,12 +15,8 @@
             </div>
         </header>
 
-        <main id="meme-grid">
-            <!-- Memes will be dynamically loaded here -->
-        </main>
-
-        <!-- Moved Upload Form to the bottom, after the main content -->
-        <form id="upload-form" enctype="multipart/form-data" method="POST" action="/upload" style="margin-top: 40px; margin-bottom: 30px; padding: 15px; border: 1px solid #333; border-radius: 8px; background-color: #0d0d0d;">
+        <!-- Moved Upload Form to the top, after the header -->
+        <form id="upload-form" enctype="multipart/form-data" method="POST" action="/upload" style="margin-top: 20px; margin-bottom: 20px; padding: 15px; border: 1px solid #333; border-radius: 8px; background-color: #0d0d0d;">
             <h3 style="color: #00ff00;">Upload New $fwog Meme</h3>
             <input type="file" name="meme_image" accept="image/*" required style="display: block; margin-bottom: 10px; width: 100%; padding: 8px; background-color: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px;">
             <input type="text" name="description" placeholder="Description (e.g., 'Gm $fwog meme')" style="display: block; margin-bottom: 10px; width: 100%; padding: 8px; background-color: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px;">
@@ -28,6 +24,9 @@
             <button type="submit" style="padding: 10px 20px; background-color: #00ff00; color: black; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Upload Meme</button>
         </form>
 
+        <main id="meme-grid">
+            <!-- Memes will be dynamically loaded here -->
+        </main>
     </div>
     <script src="/static/js/script.js"></script>
 </body>
